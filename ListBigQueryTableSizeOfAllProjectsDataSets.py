@@ -15,7 +15,7 @@ response = request.execute()
 
 print('inicio -------------------')
 
-n = text_file.write('project_name, dataset_name, table_name, size_GB')
+n = text_file.write('project_name, dataset_name, table_name, size_GB\n')
 
 # Main loop for project
 for project in response.get('projects', []):
@@ -43,6 +43,7 @@ for project in response.get('projects', []):
                     # print('\t{} size: {}'.format(table.table_id,table.size))
                     # print('{}, {}, {}, {}'.format(project_name, dataset_name, table_name, table.size_GB))
                     n = text_file.write('{}, {}, {}, {}'.format(project_name, dataset_name, table_name, table.size_GB))
+                    n = text_file.write('\n')
     except Exception as e:
         print(e)
         pass
